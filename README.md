@@ -13,12 +13,16 @@ For help getting started with Flutter, view our
 [online documentation](https://flutter.io/docs), which offers tutorials, 
 samples, guidance on mobile development, and a full API reference.
 
+添加依赖
+
 ```
 dependencies {
     implementation 'com.android.support:appcompat-v7:27.1.1'
 }
 ```
 
+
+将MainActivity的父类改为FlutterFragmentActivity
 ```
 class MainActivity: FlutterFragmentActivity() {
 }
