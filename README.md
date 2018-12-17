@@ -34,6 +34,6 @@ Frappupdate.check(updateUrl);
     "update_log": "常规更新",
     "targetSize": "10MB",
     "newMd5": "123456",
-    "constraint": true
+    "constraint": true //是否强制更新
 }
 ```
