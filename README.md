@@ -27,3 +27,9 @@ dependencies {
 class MainActivity: FlutterFragmentActivity() {
 }
 ```
+
+
+使用
+```
+Frappupdate.check(updateUrl);
+```
