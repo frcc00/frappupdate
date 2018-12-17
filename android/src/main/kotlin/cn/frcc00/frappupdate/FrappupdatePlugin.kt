@@ -46,7 +46,7 @@ class FrappupdatePlugin: MethodCallHandler {
     }.check {
       parseJson {
         val jsonObject = JSONObject(it)
-        var update = "Yes"
+        var update = "No"
         if (jsonObject.optString("version") > AppUpdateUtils.getVersionName(_context)){
           update = "Yes"
         }

@@ -2,24 +2,38 @@
 
 A new Flutter plugin.
 
-## Getting Started
+#Android only
 
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.io/developing-packages/),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.io/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+添加依赖
 
-**
+```
 dependencies {
     implementation 'com.android.support:appcompat-v7:27.1.1'
 }
-**
+```
 
-**
+
+将MainActivity的父类改为FlutterFragmentActivity
+```
 class MainActivity: FlutterFragmentActivity() {
 }
-**
+```
+
+
+使用
+```
+Frappupdate.check(updateUrl);
+```
+
+```
+{
+    "version": 1, //比本地版本大，就启动升级。
+    "newVersion": "1.0.0", //新版本号
+    "apkFileUrl": "https://*****.com/*****/1.0.0/app-release.apk",
+    "update_log": "常规更新",
+    "targetSize": "10MB",
+    "newMd5": "123456",
+    "constraint": true //是否强制更新
+}
+```
