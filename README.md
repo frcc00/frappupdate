@@ -28,8 +28,8 @@ Frappupdate.check(updateUrl);
 
 ```
 {
-    "version": 1,
-    "newVersion": "1.0.0", //比本地版本大，就启动升级。
+    "version": 1, //比本地版本大，就启动升级。
+    "newVersion": "1.0.0", //新版本号
     "apkFileUrl": "https://*****.com/*****/1.0.0/app-release.apk",
     "update_log": "常规更新",
     "targetSize": "10MB",
