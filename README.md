@@ -2,6 +2,8 @@
 
 A new Flutter plugin.
 
+#Android only
+
 
 添加依赖
 
