@@ -3,6 +3,7 @@ package cn.frcc00.frappupdate
 import android.app.Activity
 import android.content.Context
 import android.os.Environment
+import android.os.Looper
 import com.vector.update_app.HttpManager
 import com.vector.update_app.UpdateAppBean
 import com.vector.update_app.utils.AppUpdateUtils
@@ -17,6 +18,9 @@ import okhttp3.*
 import org.json.JSONObject
 import java.io.File
 import java.io.IOException
+import android.widget.Toast
+
+
 
 class FrappupdatePlugin: MethodCallHandler {
   var activity : Activity = Activity()
@@ -77,7 +81,13 @@ class FrappupdatePlugin: MethodCallHandler {
     override fun download(url: String, path: String, fileName: String, callback: HttpManager.FileCallback) {
       callback.onBefore()
       mOkHttpClient.newCall(Request.Builder().url(url).build()).enqueue(object : Callback {
-        override fun onFailure(call: Call, e: IOException) = callback.onError(e.message)
+        override fun onFailure(call: Call, e: IOException) {
+          runOnUiThread {
+            callback.onError(e.message)
+          }
+          //Looper.prepare()
+          //callback.onError(e.message)
+        }
         override fun onResponse(call: Call, response: Response) {
           val code = response.code()
           if (response.code() !in 200..299) callback.onError("$code:${response.message()}") else {

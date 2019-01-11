@@ -25,7 +25,7 @@ class _MyAppState extends State<MyApp> {
     String platformVersion;
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
-      platformVersion = await Frappupdate.check("https://github.com/LiHang941/btoken-update-manager/raw/master/interstellwallet.json");
+      platformVersion = await Frappupdate.check("https://github.com/LiHang941/btoken-update-manager/raw/master/interstellwallettest1.json");
     } on PlatformException {
       platformVersion = 'Failed to get platform version.';
     }
