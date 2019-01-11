@@ -23,7 +23,7 @@ class MainActivity: FlutterFragmentActivity() {
 
 使用
 ```
-Frappupdate.check(updateUrl);
+Frappupdate.check(updateUrl.json);
 ```
 
 ```
