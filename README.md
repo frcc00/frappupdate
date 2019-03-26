@@ -28,7 +28,7 @@ Frappupdate.check(updateUrl.json);
 
 ```
 {
-    "version": 1, //比本地版本大，就启动升级。
+    "version": "1.1.0", //比本地版本大，就启动升级。
     "newVersion": "1.0.0", //新版本号
     "apkFileUrl": "https://*****.com/*****/1.0.0/app-release.apk",
     "update_log": "常规更新",
