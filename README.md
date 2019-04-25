@@ -9,7 +9,7 @@ A new Flutter plugin.
 
 ```
 dependencies {
-    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support:appcompat-v7:28.+'
 }
 ```
 
