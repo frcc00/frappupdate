@@ -132,7 +132,9 @@ class FrAppUpdate {
                                           Text('$confirmBtnString'),
                                         ],
                                       ), onPressed: () {
-                                        setState((){_progressValue=0;});
+                                        if(defaultTargetPlatform != TargetPlatform.iOS){
+                                          setState((){_progressValue=0;});
+                                        }
                                         confirmAction(model,(val){
                                           var pVal = double.tryParse(val.toString())??_progressValue;
                                           if(pVal > 0){

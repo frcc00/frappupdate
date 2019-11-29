@@ -31,3 +31,8 @@
 ## 0.0.7
 
 * fix ios issues
+
+
+## 0.0.8
+
+* fix ios issues
