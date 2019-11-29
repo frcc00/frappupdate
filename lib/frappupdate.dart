@@ -145,7 +145,7 @@ class FrAppUpdate {
                                         });
                                       },
                                     ),
-                                    defaultTargetPlatform == TargetPlatform.iOS?(model.ipaConstraint??model.constraint):model.constraint==true?Container():OutlineButton(
+                                    (defaultTargetPlatform == TargetPlatform.iOS?(model.ipaConstraint??model.constraint):model.constraint)==true?Container():OutlineButton(
                                       child: Row(
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: <Widget>[
