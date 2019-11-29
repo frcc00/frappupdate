@@ -75,7 +75,7 @@ class FrAppUpdate {
     }
     var plugResult = true;
     if(defaultTargetPlatform == TargetPlatform.iOS){
-      var needIpaUpdate = await checkUpdate(model.ipaVersion);
+      var needIpaUpdate = await checkUpdate(model.ipaVersion??model.version);
       if(plug != null){
         plugResult = await plug(needIpaUpdate);
       }

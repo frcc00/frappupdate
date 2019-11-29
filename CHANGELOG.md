@@ -16,3 +16,8 @@
 ## 0.0.4
 
 * remove ()
+
+
+## 0.0.5
+
+* fix default ipaVersion
