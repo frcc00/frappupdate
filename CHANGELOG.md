@@ -21,3 +21,8 @@
 ## 0.0.5
 
 * fix default ipaVersion
+
+
+## 0.0.6
+
+* fix ios issues

@@ -120,9 +120,9 @@ class FrAppUpdate {
                             child: Column(
                               children: <Widget>[
                                 Text('$newVersionString',style: TextStyle(color: Colors.black,fontSize: 22,fontWeight: FontWeight.bold),),
-                                Text('${defaultTargetPlatform == TargetPlatform.iOS?model.ipaVersion??model.version:model.version}',style: TextStyle(color: Colors.black,fontSize: 22,fontWeight: FontWeight.bold),),
-                                Text('${defaultTargetPlatform == TargetPlatform.iOS?"":model.apkSize??''}'),
-                                Expanded(child: SingleChildScrollView(child: Align(alignment: Alignment.topLeft,child: Text('${defaultTargetPlatform == TargetPlatform.iOS?model.ipaUpdateLog??model.updateLog:model.updateLog}',textAlign: TextAlign.left,)))),
+                                Text('${defaultTargetPlatform == TargetPlatform.iOS?(model.ipaVersion??model.version):model.version}',style: TextStyle(color: Colors.black,fontSize: 22,fontWeight: FontWeight.bold),),
+                                Text('${defaultTargetPlatform == TargetPlatform.iOS?"":(model.apkSize??'')}'),
+                                Expanded(child: SingleChildScrollView(child: Align(alignment: Alignment.topLeft,child: Text('${defaultTargetPlatform == TargetPlatform.iOS?(model.ipaUpdateLog??model.updateLog):model.updateLog}',textAlign: TextAlign.left,)))),
                                 _progressValue>=0?LinearProgressIndicator(value: _progressValue,):Column(
                                   children: <Widget>[
                                     OutlineButton(
@@ -145,7 +145,7 @@ class FrAppUpdate {
                                         });
                                       },
                                     ),
-                                    defaultTargetPlatform == TargetPlatform.iOS?model.ipaConstraint??model.constraint:model.constraint==true?Container():OutlineButton(
+                                    defaultTargetPlatform == TargetPlatform.iOS?(model.ipaConstraint??model.constraint):model.constraint==true?Container():OutlineButton(
                                       child: Row(
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: <Widget>[
