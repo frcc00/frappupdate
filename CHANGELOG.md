@@ -11,3 +11,8 @@
 ## 0.0.3
 
 * add getLocalVersion
+
+
+## 0.0.4
+
+* remove ()
