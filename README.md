@@ -1,39 +1,27 @@
 # frappupdate
+this is a packaging code.
+many thanks to version, package_info, path_provider, ota_update, url_launcher
 
-A new Flutter plugin.
-
-#Android only
-
-
-添加依赖
+## Getting Started
 
 ```
-dependencies {
-    implementation 'com.android.support:appcompat-v7:27.1.1'
-}
+FrAppUpdate.checkUpdateFromUrl(context, 'http://61.153.141.146:444/sy/app-service/version/getVersion',plug: (needUpDate)async{
+   if(needUpDate==false){
+     print('updated');
+   }
+   return needUpDate;
+});
 ```
 
-
-将MainActivity的父类改为FlutterFragmentActivity
-```
-class MainActivity: FlutterFragmentActivity() {
-}
-```
-
-
-使用
-```
-Frappupdate.check(updateUrl.json);
-```
+or
 
 ```
-{
-    "version": "1.1.0", //比本地版本大，就启动升级。
-    "newVersion": "1.0.0", //新版本号
-    "apkFileUrl": "https://*****.com/*****/1.0.0/app-release.apk",
-    "update_log": "常规更新",
-    "targetSize": "10MB",
-    "newMd5": "123456",
-    "constraint": true //是否强制更新
-}
+var model = FrAppUpdateVersionModel();
+model.downloadUrl = 'http://61.153.141.146:444/sy/file-service/file/get?fileType=AUDIO&path=ship-app-service%2Fapp-release2.1.7.apk';
+model.updateLog = '大版本更新\n1、修复了bug\n2、修复了bug';
+model.constraint = true;
+model.apkSize = '35.8M';
+model.version = '6.6.6';
+FrAppUpdate.showUpdateView(context, model);
 ```
+

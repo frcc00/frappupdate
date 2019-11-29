@@ -1,8 +1,7 @@
-group 'cn.frcc00.frappupdate'
-version '1.0-SNAPSHOT'
+group 'com.frappupdate.frappupdate'
+version '1.0'
 
 buildscript {
-    ext.kotlin_version = '1.3.11'
     repositories {
         google()
         jcenter()
@@ -10,7 +9,6 @@ buildscript {
 
     dependencies {
         classpath 'com.android.tools.build:gradle:3.2.1'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
@@ -22,28 +20,15 @@ rootProject.allprojects {
 }
 
 apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 28
 
-    sourceSets {
-        main.java.srcDirs += 'src/main/kotlin'
-    }
     defaultConfig {
-        minSdkVersion 19
+        minSdkVersion 16
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     lintOptions {
         disable 'InvalidPackage'
     }
 }
-
-dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.qianwen:update-app-kotlin:1.2.3'
-    implementation 'com.qianwen:update-app:3.5.2'
-    implementation 'com.squareup.okhttp3:okhttp:3.11.0'
-    implementation 'com.android.support:appcompat-v7:28.0.0'
-}
-

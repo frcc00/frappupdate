@@ -4,7 +4,9 @@ import 'dart:async';
 import 'package:flutter/services.dart';
 import 'package:frappupdate/frappupdate.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(MaterialApp(
+  home: MyApp(),
+));
 
 class MyApp extends StatefulWidget {
   @override
@@ -17,26 +19,25 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    initPlatformState();
+    Future.delayed(Duration(seconds: 0),(){
+      initPlatformState();
+    });
   }
 
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initPlatformState() async {
-    String platformVersion;
-    // Platform messages may fail, so we use a try/catch PlatformException.
-    try {
-      platformVersion = await Frappupdate.check("https://github.com/LiHang941/btoken-update-manager/raw/master/interstellwallettest1.json");
-    } on PlatformException {
-      platformVersion = 'Failed to get platform version.';
-    }
-
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
-    if (!mounted) return;
-
-    setState(() {
-      _platformVersion = platformVersion;
+    var model = FrAppUpdateVersionModel();
+    model.downloadUrl = 'http://61.153.141.146:444/sy/file-service/file/get?fileType=AUDIO&path=ship-app-service%2Fapp-release2.1.7.apk';
+    model.updateLog = '大版本更新\n1、修复了bug\n2、修复了bug';
+    model.constraint = true;
+    model.apkSize = '35.8M';
+    model.version = '6.6.6';
+    FrAppUpdate.showUpdateView(context, model);
+    FrAppUpdate.checkUpdateFromUrl(context, 'http://61.153.141.146:444/sy/app-service/version/getVersion',plug: (needUpDate)async{
+      if(needUpDate==false){
+        print('updated');
+      }
+      return needUpDate;
     });
   }
 
