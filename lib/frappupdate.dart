@@ -106,7 +106,7 @@ class FrAppUpdate {
                               children: <Widget>[
                                 Text('$newVersionString',style: TextStyle(color: Colors.black,fontSize: 22,fontWeight: FontWeight.bold),),
                                 Text('${defaultTargetPlatform == TargetPlatform.iOS?model.ipaVersion??model.version:model.version}',style: TextStyle(color: Colors.black,fontSize: 22,fontWeight: FontWeight.bold),),
-                                Text('(${defaultTargetPlatform == TargetPlatform.iOS?"":model.apkSize})'),
+                                Text('(${defaultTargetPlatform == TargetPlatform.iOS?"":model.apkSize??''})'),
                                 Expanded(child: SingleChildScrollView(child: Align(alignment: Alignment.topLeft,child: Text('${defaultTargetPlatform == TargetPlatform.iOS?model.ipaUpdateLog??model.updateLog:model.updateLog}',textAlign: TextAlign.left,)))),
                                 _progressValue>=0?LinearProgressIndicator(value: _progressValue,):Column(
                                   children: <Widget>[
