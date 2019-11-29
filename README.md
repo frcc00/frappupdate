@@ -4,6 +4,8 @@ many thanks to version, package_info, path_provider, ota_update, url_launcher
 
 ## Getting Started
 
+![avatar](https://github.com/frcc00/frappupdate/blob/master/screenshot/Screen%20Shot%202019-11-28%20at%208.22.46%20PM.png)
+
 ```
 FrAppUpdate.checkUpdateFromUrl(context, 'http://61.153.141.146:444/sy/app-service/version/getVersion',plug: (needUpDate)async{
    if(needUpDate==false){
