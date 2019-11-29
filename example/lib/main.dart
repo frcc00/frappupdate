@@ -33,12 +33,12 @@ class _MyAppState extends State<MyApp> {
     model.apkSize = '35.8M';
     model.version = '6.6.6';
     FrAppUpdate.showUpdateView(context, model);
-    FrAppUpdate.checkUpdateFromUrl(context, 'http://61.153.141.146:444/sy/app-service/version/getVersion',plug: (needUpDate)async{
-      if(needUpDate==false){
-        print('updated');
-      }
-      return needUpDate;
-    });
+//    FrAppUpdate.checkUpdateFromUrl(context, 'http://61.153.141.146:444/sy/app-service/version/getVersion',plug: (needUpDate)async{
+//      if(needUpDate==false){
+//        print('updated');
+//      }
+//      return needUpDate;
+//    });
   }
 
   @override

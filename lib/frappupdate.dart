@@ -37,6 +37,11 @@ class FrAppUpdateVersionModel {
 }
 
 class FrAppUpdate {
+
+  static String newVersionString = '发现新版本';
+  static String confirmBtnString = '更新';
+  static String cancelBtnString = '取消';
+
   static Future<bool> checkUpdate(String remoteVersion) async{
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
     String localVersion = packageInfo.version;
@@ -45,6 +50,10 @@ class FrAppUpdate {
     return remote > local;
   }
 
+  static Future<String> getLocalVersion() async{
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+    return packageInfo.version;
+  }
 
   //response must be json
   //{"version":"1.0.0","updateLog":"updateLog","downloadUrl":"downloadUrl",
@@ -84,7 +93,7 @@ class FrAppUpdate {
   static OverlayEntry _entry;
   static double _progressValue=-1;
 
-  static showUpdateView(BuildContext context, FrAppUpdateVersionModel model,{Function(Error) onError,String newVersionString='发现新版本',String confirmBtnString='更新',cancelBtnString='取消'}) async{
+  static showUpdateView(BuildContext context, FrAppUpdateVersionModel model,{Function(Error) onError}) async{
     _progressValue = -1;
     _entry = OverlayEntry(
         builder: (context){
