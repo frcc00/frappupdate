@@ -1,6 +1,6 @@
 name: frappupdate
 description: check app version, add show update info view.
-version: 0.0.1
+version: 0.0.2
 author: frcc
 homepage: https://github.com/frcc00/frappupdate
 

@@ -50,14 +50,20 @@ class FrAppUpdate {
   //{"version":"1.0.0","updateLog":"updateLog","downloadUrl":"downloadUrl",
   // "apkSize":"apkSize","constraint":true,"ipaVersion":"ipaVersion",
   // "ipaDownloadUrl":"ipaDownloadUrl","ipaConstraint":false,"ipaUpdateLog":"ipaUpdateLog"}
-  static checkUpdateFromUrl(BuildContext context, String url,{String method='get'/*get or post*/,Future<bool> Function(bool needUpDate) plug}) async{
+  static checkUpdateFromUrl(BuildContext context, String url,{String method='get'/*get or post*/,Future<bool> Function(bool needUpDate) plug, Future<Map> Function(Map response) onResponse}) async{
     var httpClient = new HttpClient();
     var request = method=='get' ? await httpClient.getUrl(Uri.parse(url)):await httpClient.postUrl(Uri.parse(url));
     var response = await request.close();
     var responseBody = await response.transform(utf8.decoder).join();
     print(responseBody);
     var responseData = json.decode(responseBody);
-    FrAppUpdateVersionModel model = FrAppUpdateVersionModel.fromMap(responseData);
+    FrAppUpdateVersionModel model;
+    if(onResponse != null){
+      var data = await onResponse(responseData);
+      model = FrAppUpdateVersionModel.fromMap(data);
+    }else{
+      model = FrAppUpdateVersionModel.fromMap(responseData);
+    }
     var plugResult = true;
     if(defaultTargetPlatform == TargetPlatform.iOS){
       var needIpaUpdate = await checkUpdate(model.ipaVersion);
