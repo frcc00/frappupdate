@@ -185,7 +185,7 @@ class FrAppUpdate {
       launch(model.ipaDownloadUrl);
     }else{
       try {
-        OtaUpdate().execute(model.downloadUrl).listen(
+        OtaUpdate().execute(model.downloadUrl,destinationFilename: 'base.apk').listen(
               (OtaEvent event) {
             print('EVENT: ${event.status} : ${event.value}');
             if(event.status == OtaStatus.DOWNLOADING){
