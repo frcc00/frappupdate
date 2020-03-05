@@ -8,3 +8,9 @@ pubspec.lock
 build/
 
 .idea/
+local.properties
+gradlew
+gradlew.bat
+gradle-wrapper.jar
+.flutter-plugins-dependencies
+settings_aar.gradle

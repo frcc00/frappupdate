@@ -186,8 +186,11 @@ class FrAppUpdate {
       launch(model.ipaDownloadUrl);
     }else{
       PermissionStatus permission = await PermissionHandler().checkPermissionStatus(PermissionGroup.storage);
-      if(permission==PermissionStatus.denied || permission==PermissionStatus.neverAskAgain){
-        launch(model.downloadUrl);
+      if(permission!=PermissionStatus.granted){
+        Map<PermissionGroup, PermissionStatus> permissions = await PermissionHandler().requestPermissions([PermissionGroup.storage]);
+        if(permissions[PermissionGroup.storage]!=PermissionStatus.granted){
+          launch(model.downloadUrl);
+        }
         return;
       }
       try {
