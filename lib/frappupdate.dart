@@ -6,6 +6,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:ota_update/ota_update.dart';
 import 'package:package_info/package_info.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:version/version.dart';
 
@@ -184,6 +185,11 @@ class FrAppUpdate {
     if(defaultTargetPlatform == TargetPlatform.iOS){
       launch(model.ipaDownloadUrl);
     }else{
+      PermissionStatus permission = await PermissionHandler().checkPermissionStatus(PermissionGroup.storage);
+      if(permission==PermissionStatus.denied || permission==PermissionStatus.neverAskAgain){
+        launch(model.downloadUrl);
+        return;
+      }
       try {
         OtaUpdate().execute(model.downloadUrl,destinationFilename: 'base.apk').listen(
               (OtaEvent event) {

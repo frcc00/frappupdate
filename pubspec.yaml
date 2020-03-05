@@ -1,6 +1,6 @@
 name: frappupdate
 description: check app version, add show update info view.
-version: 0.0.9
+version: 0.0.10
 author: frcc
 homepage: https://github.com/frcc00/frappupdate
 
@@ -16,6 +16,7 @@ dependencies:
   path_provider: any
   ota_update: 2.2.1
   url_launcher: any
+  permission_handler: any
 
 dev_dependencies:
   flutter_test:
