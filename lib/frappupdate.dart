@@ -110,9 +110,10 @@ class FrAppUpdate {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: <Widget>[
-                          Image.asset('image/lib_update_app_top_bg.png',package: 'frappupdate',width: 250,),
+                          Theme.of(context).brightness==Brightness.light?Image.asset('image/lib_update_app_top_bg.png',package: 'frappupdate',width: 250,):
+                      Image.asset('image/lib_update_app_top_bg.png',package: 'frappupdate',width: 250,colorBlendMode: BlendMode.modulate,color: Theme.of(context).cardColor,),
                           Container(
-                            color: Colors.white,
+                            color: Theme.of(context).cardColor,
                             constraints: BoxConstraints(
                                 maxHeight: 300,
                                 minWidth: 100
@@ -120,8 +121,8 @@ class FrAppUpdate {
                             padding: EdgeInsets.all(10),
                             child: Column(
                               children: <Widget>[
-                                Text('$newVersionString',style: TextStyle(color: Colors.black,fontSize: 22,fontWeight: FontWeight.bold),),
-                                Text('${defaultTargetPlatform == TargetPlatform.iOS?(model.ipaVersion??model.version):model.version}',style: TextStyle(color: Colors.black,fontSize: 22,fontWeight: FontWeight.bold),),
+                                Text('$newVersionString',style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),),
+                                Text('${defaultTargetPlatform == TargetPlatform.iOS?(model.ipaVersion??model.version):model.version}',style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),),
                                 Text('${defaultTargetPlatform == TargetPlatform.iOS?"":(model.apkSize??'')}'),
                                 Expanded(child: SingleChildScrollView(child: Align(alignment: Alignment.topLeft,child: Text('${defaultTargetPlatform == TargetPlatform.iOS?(model.ipaUpdateLog??model.updateLog):model.updateLog}',textAlign: TextAlign.left,)))),
                                 _progressValue>=0?LinearProgressIndicator(value: _progressValue,):Column(

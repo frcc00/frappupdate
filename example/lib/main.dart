@@ -5,6 +5,13 @@ import 'package:flutter/services.dart';
 import 'package:frappupdate/frappupdate.dart';
 
 void main() => runApp(MaterialApp(
+  themeMode: ThemeMode.dark,
+  theme: ThemeData(
+    brightness: Brightness.light
+  ),
+  darkTheme: ThemeData(
+    brightness: Brightness.dark
+  ),
   home: MyApp(),
 ));
 
@@ -29,7 +36,7 @@ class _MyAppState extends State<MyApp> {
     var model = FrAppUpdateVersionModel();
     model.downloadUrl = 'http://61.153.141.146:444/sy/file-service/file/get?fileType=AUDIO&path=ship-app-service%2Fapp-release2.1.7.apk';
     model.updateLog = '大版本更新\n1、修复了bug\n2、修复了bug';
-    model.constraint = true;
+    model.constraint = false;
     model.apkSize = '35.8M';
     model.version = '6.6.6';
     FrAppUpdate.showUpdateView(context, model);
@@ -44,6 +51,8 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      themeMode: ThemeMode.dark,
+
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Plugin example app'),
